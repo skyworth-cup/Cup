@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="water_first">#da74e7e6</color>
+    <color name="water_second">#da9ff3f9</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="judge_area">#d1f6e16f</color>
+    <color name="level_selected">#08ef87</color>
+</resources>

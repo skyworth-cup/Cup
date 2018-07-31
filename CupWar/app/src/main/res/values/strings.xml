@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">杯水大战</string>
+    <string name="btn_setting">设置</string>
+    <string name="btn_normal">普通模式</string>
+    <string name="btn_challenge">挑战模式</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
