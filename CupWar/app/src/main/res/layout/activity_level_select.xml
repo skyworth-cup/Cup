@@ -5,17 +5,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:keepScreenOn="true"
     tools:context=".activity.LevelSelectActivity"
     android:background="@drawable/level_select_background">
+
     <android.support.v4.view.ViewPager
         android:id="@+id/level_menu"
         android:layout_width="400dp"
         android:layout_height="400dp"
         android:layout_centerInParent="true">
-        <FrameLayout
 
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
     </android.support.v4.view.ViewPager>
 
     <ImageView
@@ -26,6 +29,7 @@
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:layout_marginStart="100dp"/>
+
     <ImageView
         android:id="@+id/btn_next"
         android:layout_width="70dp"

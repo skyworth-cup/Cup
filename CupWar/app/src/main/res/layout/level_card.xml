@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:padding="5dp"
     android:focusable="true"
+    android:keepScreenOn="true"
     android:background="@drawable/level_selected">
     <ImageView
         android:layout_centerInParent="true"
