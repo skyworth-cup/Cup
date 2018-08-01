@@ -24,6 +24,7 @@ public class PassDialog extends Dialog {
     private TextView level;
     private TextView time;
     private TextView point;
+    private PassControlListener mListener;
     public PassDialog(@NonNull Context context) {
         super(context);
         setContentView(R.layout.dialog_pass);
@@ -54,13 +55,13 @@ public class PassDialog extends Dialog {
         replay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mListener.onReplay();
             }
         });
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mListener.onNext();
             }
         });
         WindowManager m = getWindow().getWindowManager();
@@ -90,6 +91,15 @@ public class PassDialog extends Dialog {
         else {
             leaf_2.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void setControlListener(PassControlListener listener){
+        mListener = listener;
+    }
+
+    public interface PassControlListener{
+        void onReplay();
+        void onNext();
     }
 
 }

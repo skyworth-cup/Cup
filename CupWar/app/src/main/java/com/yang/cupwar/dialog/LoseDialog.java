@@ -26,6 +26,7 @@ public class LoseDialog extends Dialog{
     private Button forgive;
     private int width;
     private int height;
+    private LoseControlListener mListener;
     public LoseDialog(@NonNull Context context) {
         super(context);
         setContentView(R.layout.dialog_lose);
@@ -54,12 +55,14 @@ public class LoseDialog extends Dialog{
             @Override
             public void onClick(View view) {
                 //重玩
+                mListener.onReplay();
             }
         });
         forgive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 取消
+                mListener.onForigve();
             }
         });
         WindowManager m = getWindow().getWindowManager();
@@ -102,5 +105,14 @@ public class LoseDialog extends Dialog{
         text2.startAnimation(animate2);
         text3.startAnimation(animate3);
         text4.startAnimation(animate4);
+    }
+
+    public void setControlListener(LoseControlListener listener){
+        mListener = listener;
+    }
+
+    public interface LoseControlListener{
+        void onReplay();
+        void onForigve();
     }
 }

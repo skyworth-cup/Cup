@@ -57,7 +57,7 @@
         android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginRight="150dp"
-        android:background="@drawable/btn_again"
+        android:background="@drawable/btn_lose_replay"
         />
 
     <Button
@@ -67,7 +67,7 @@
         android:layout_marginTop="-70dp"
         android:layout_marginLeft="150dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/btn_forgive"
+        android:background="@drawable/btn_forgive_focus"
         />
 
 

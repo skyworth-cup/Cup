@@ -109,7 +109,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginRight="35dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/dialog_replay" />
+        android:background="@drawable/btn_pass_replay" />
 
     <Button
         android:id="@+id/btn_next_level"
@@ -118,7 +118,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="-50dp"
-        android:background="@drawable/dialog_btn_next" />
+        android:background="@drawable/btn_next_focus" />
 
 
 </LinearLayout>
