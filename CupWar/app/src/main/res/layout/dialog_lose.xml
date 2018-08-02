@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+                android:background="@drawable/lose_background"
     >
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/lose_background"
-        android:layout_gravity="center_horizontal"/>
 
     <ImageView
         android:id="@+id/text_1"
@@ -18,6 +13,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="-300dp"
         android:layout_marginRight="150dp"
+        android:layout_above="@id/text_2"
         android:src="@drawable/text_1"
         />
 
@@ -25,9 +21,7 @@
         android:id="@+id/text_2"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="130dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_centerInParent="true"
         android:src="@drawable/text_2"
 
         />
@@ -35,18 +29,14 @@
         android:id="@+id/text_3"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginRight="70dp"
-        android:layout_gravity="center_horizontal"
         android:src="@drawable/text_3"
-
+        android:layout_below="@id/text_2"
         />
     <ImageView
         android:id="@+id/text_4"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="130dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_below="@id/text_3"
         android:src="@drawable/text_4"
         />
 
@@ -55,21 +45,23 @@
         android:layout_height="70dp"
         android:layout_width="154dp"
         android:layout_marginTop="30dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginRight="150dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="200dp"
         android:background="@drawable/btn_lose_replay"
         />
 
     <Button
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="200dp"
         android:id="@+id/btn_forgive"
         android:layout_height="70dp"
         android:layout_width="154dp"
-        android:layout_marginTop="-70dp"
-        android:layout_marginLeft="150dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/btn_forgive_focus"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         />
 
 
-
-</LinearLayout>
+</RelativeLayout>

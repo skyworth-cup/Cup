@@ -2,6 +2,9 @@ package com.yang.cupwar.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Message;
@@ -13,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.yang.cupwar.GameView;
 import com.yang.cupwar.R;
 import com.yang.cupwar.dialog.LoseDialog;
@@ -50,7 +52,7 @@ public class GameActivity extends BaseActivity {
     private static final int MESSAGE_LOSE_REPLAY = 4;
     private static final int MESSAGE_NEXT = 5;
     private static final int MESSAGE_FORGIVE = 6;
-
+    private static final int MESSAGE_FULL = 7;
     private Handler gameFinishHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -127,6 +129,13 @@ public class GameActivity extends BaseActivity {
                     break;
                 case MESSAGE_FORGIVE:
                     finish();
+                    break;
+                case MESSAGE_FULL:
+                    FrameLayout.LayoutParams value = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                    viewGroup.addView(gif,value);
+                    AnimationDrawable ad = (AnimationDrawable) gif.getDrawable();
+                    ad.start();
+                    break;
             }
         }
     };
@@ -142,9 +151,16 @@ public class GameActivity extends BaseActivity {
         // 界面获取焦点 for 点击事件
         view.setFocusable(true);
         view.requestFocus();
-        view.setOnGameFinishListener(new GameView.GameFinishListener() {
+        view.setOnGameFinishListener(new GameView.GameListener() {
             @Override
             public void onFinish(Message message) {
+                gameFinishHandler.sendMessage(message);
+            }
+
+            @Override
+            public void onFull() {
+                Message message = new Message();
+                message.what = MESSAGE_FULL;
                 gameFinishHandler.sendMessage(message);
             }
         });
@@ -155,14 +171,15 @@ public class GameActivity extends BaseActivity {
     }
 
     private void initGameView(){
+        // 回收
         gif = new ImageView(this);
+        gif.setImageResource(R.drawable.animate_flow);
         view = new GameView(this, levelId, modeType);
         viewGroup = new FrameLayout(this);
         FrameLayout.LayoutParams value = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         viewGroup.addView(view, value);
-        viewGroup.addView(gif, value);
         setContentView(viewGroup);
-        Glide.with(this).load(R.drawable.out).into(gif);
+
     }
 
     private void unlock(){
@@ -174,6 +191,8 @@ public class GameActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        AnimationDrawable ad = (AnimationDrawable) gif.getDrawable();
+        ad.stop();
         bgm.release();
     }
 }

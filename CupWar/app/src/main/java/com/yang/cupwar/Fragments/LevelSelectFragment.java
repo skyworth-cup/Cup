@@ -97,6 +97,8 @@ public class LevelSelectFragment extends Fragment {
             return 9;
         }
     }
+
+    // TODO: 2018/8/2 锁住的关卡不设置监听
     class levelViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private int level_leaf = 0;
         private int level_label;

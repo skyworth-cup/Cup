@@ -109,7 +109,7 @@ public class Water {
     }
 
     public void rise(){
-        if(baseline < ScreenH/3.025 || isStop){
+        if(baseline <= 0 || isStop){
             return;
         }
         else

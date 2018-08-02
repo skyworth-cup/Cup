@@ -59,12 +59,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Run
     private Timer timer;
     private WarningLine line;
     private int count = 0;
-    private GameFinishListener mListener;
+    private GameListener mListener;
 
     // 游戏结束标识
     private boolean isFinished = false;
     private boolean isDestroy = false; //view销毁时停止线程
-
+    private boolean isFull = false;
     // 游戏声音
     private SoundPool count_down;
     private int sound_id;
@@ -184,6 +184,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Run
             if (time_1 == null){
                 time_1 = new Date();
             }
+            if (water.getBaseline()<ScreenH/4 && !isFull){
+                mListener.onFull();
+                isFull = true;
+            }
             time_2  = new Date();
             if (time_2.getTime() - time_1.getTime() >= 1000){
 
@@ -240,7 +244,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Run
         dialog.show();
     }
 
-    public void setOnGameFinishListener(GameFinishListener listener){
+    public void setOnGameFinishListener(GameListener listener){
         mListener = listener;
     }
 
@@ -251,7 +255,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Run
         return Math.round(point*100)/100;
     }
 
-    public interface GameFinishListener{
+    public interface GameListener{
         void onFinish(Message message);
+        void onFull();
     }
 }
